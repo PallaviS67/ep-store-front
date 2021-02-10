@@ -1,0 +1,67 @@
+import React from 'react';
+
+class myComponent extends React.Component {
+  componentDidMount() {
+    const apiUrl = 'http://localhost:5000/';
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => console.log('This is your data', data));
+  }
+  render() {
+    return <h1>my Component has Mounted, Check the browser 'console' </h1>;
+  }
+}
+export default myComponent;
+
+<ul>
+       {watches.map(item => <li key={item.name}>{item.name}----{item.time}---{item.image}</li>)}
+     </ul>
+
+
+
+
+/////////////////////////// back end //////////////////
+console.log(products.data.length)
+let results=[]
+for (var i =0; i<products.data.length; i++)
+{
+  
+let result = {
+    "id":products.data[i].id,
+        "name":products.data[i].name,
+        "time":products.data[i].meta.timestamps.updated_at,
+        "image" : products.data[i].relationships.main_image.data.id,
+        "price": products.data[i].price,
+        "stock":products.data[i].meta.stock
+
+      }
+      
+      results.unshift(result);
+}
+
+set_values(products);
+
+
+
+app.get('/', cors(), function (req, res) {
+    res.send(results);
+});
+
+var server = app.listen(5000, function () {
+    console.log('Node server is running..');
+});
+
+
+
+function set_values(arg1){
+    let productId= arg1;
+  
+  client
+  .get(`inventories/${productId}`)
+  .then(inventory => {
+    productId= inventory.data.available
+    console.log(productId)
+  })
+  .catch(console.error)
+  console.log(productId)
+}

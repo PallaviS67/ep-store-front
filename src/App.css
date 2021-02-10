@@ -1,0 +1,25 @@
+ul#horizontal-list {
+	min-width: 696px;
+
+	padding-top: 20px;
+	}
+
+
+
+
+ul#horizontal-list li {
+  display: inline;
+}
+li{
+  float: left;
+}
+
+div#list_items{
+	
+		background-color: lightgrey;
+		width: 300px;
+		border: 15px black;
+		padding: 50px;
+		margin: 10px;
+	
+}
